@@ -1,0 +1,57 @@
+КАК ОПУБЛИКОВАТЬ UI ЧЕРЕЗ GITHUB PAGES
+
+1. Открой github.com и войди в свой аккаунт.
+
+2. Нажми кнопку New repository.
+
+3. Название:
+   ai-review-tz
+
+4. Выбери Public или Private:
+   - если корпоративная политика разрешает только Private — выбирай Private;
+   - доступность GitHub Pages для Private зависит от тарифа GitHub организации.
+   Если не уверена — сначала уточним отдельно, ничего секретного в этих UI-файлах нет.
+
+5. Нажми Create repository.
+
+6. В новом пустом репозитории нажми:
+   "uploading an existing file"
+   или Add file → Upload files.
+
+7. Распакуй ZIP, который дал ChatGPT.
+
+8. Загрузи в репозиторий ЧЕТЫРЕ файла из папки:
+   index.html
+   styles.css
+   app.js
+   .nojekyll
+
+   README.md можно тоже загрузить, но он не обязателен для работы.
+
+9. Внизу страницы GitHub нажми Commit changes.
+
+10. Открой:
+    Settings → Pages
+
+11. В блоке Build and deployment:
+    Source → Deploy from a branch
+
+12. Выбери:
+    Branch: main
+    Folder: / (root)
+
+13. Нажми Save.
+
+14. Подожди 1–3 минуты и обнови Settings → Pages.
+
+15. GitHub покажет ссылку примерно:
+    https://ТВОЙ-ЛОГИН.github.io/ai-review-tz/
+
+16. Открой ее.
+
+Ты должна увидеть экран:
+"AI-ревью технического задания"
+
+Важно:
+Сейчас кнопка работает в ДЕМО-режиме.
+После того как UI появится по ссылке, следующим шагом подключаем его к MWS.
