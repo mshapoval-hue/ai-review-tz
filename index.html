@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000F1E" />
+  <title>AI-ревью ТЗ · MTS AI</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="topbar__inner">
+        <a class="brand" href="./" aria-label="MTS AI">
+          <img class="brand__logo" src="./mts-ai-logo.png" alt="MTS AI" />
+        </a>
+
+        <div class="topbar__meta">
+          <span class="topbar__eyebrow">Внутренний инструмент аналитиков</span>
+          <span class="bridge-pill">
+            <span class="bridge-pill__dot"></span>
+            AI Review Bridge
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero__orbit hero__orbit--one"></div>
+        <div class="hero__orbit hero__orbit--two"></div>
+
+        <div class="container hero__content">
+          <div class="hero__copy">
+            <div class="tag tag--red">MTS AI · ANALYTICS</div>
+            <h1>AI-ревью<br />технического задания</h1>
+            <p class="hero__lead">
+              Загрузите ТЗ в формате DOCX. Система проверит структуру,
+              требования и консистентность документа и сформирует список замечаний.
+            </p>
+          </div>
+
+          <div class="hero__visual" aria-hidden="true">
+            <div class="hero-cube">
+              <span class="hero-cube__top">AI</span>
+              <span class="hero-cube__main">ТЗ</span>
+              <span class="hero-cube__side">✓</span>
+            </div>
+            <div class="hero-chip hero-chip--red">review</div>
+            <div class="hero-chip hero-chip--violet">DOCX</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <div class="container">
+          <div id="upload-card" class="workspace-card">
+            <div class="workspace-card__head">
+              <div>
+                <span class="section-kicker">01 · ДОКУМЕНТ</span>
+                <h2>Загрузите ТЗ</h2>
+              </div>
+
+              <div id="status-text" class="status-text">
+                Перед проверкой запустите AI Review Bridge
+              </div>
+            </div>
+
+            <input
+              id="file-input"
+              type="file"
+              accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+              hidden
+            />
+
+            <div
+              id="dropzone"
+              class="dropzone"
+              role="button"
+              tabindex="0"
+              aria-label="Выбрать DOCX-файл"
+            >
+              <div class="dropzone__icon">
+                <span>DOCX</span>
+              </div>
+
+              <div class="dropzone__copy">
+                <h3 id="drop-title">Перетащите ТЗ сюда</h3>
+                <p id="drop-subtitle">или нажмите, чтобы выбрать файл</p>
+                <span class="dropzone__hint">Один DOCX · до 200 страниц</span>
+              </div>
+
+              <div class="dropzone__accent"></div>
+            </div>
+
+            <div id="selected-file" class="selected-file hidden">
+              <div class="selected-file__left">
+                <div class="selected-file__badge">DOCX</div>
+                <div>
+                  <div id="file-name" class="selected-file__name">—</div>
+                  <div id="file-meta" class="selected-file__meta">—</div>
+                </div>
+              </div>
+
+              <button id="clear-file" class="icon-button" type="button" aria-label="Удалить файл">
+                ×
+              </button>
+            </div>
+
+            <div class="workspace-card__footer">
+              <div class="security-note">
+                <span class="security-note__icon">✓</span>
+                Документ обрабатывается через корпоративный контур MWS
+              </div>
+
+              <button id="start-review" class="primary-button" type="button" disabled>
+                Запустить ревью
+                <span class="primary-button__arrow">→</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="progress-card" class="workspace-card progress-card hidden">
+            <div class="workspace-card__head">
+              <div>
+                <span class="section-kicker">02 · ПРОВЕРКА</span>
+                <h2>AI-ревью выполняется</h2>
+              </div>
+
+              <div class="processing-chip">
+                <span class="processing-chip__dot"></span>
+                В работе
+              </div>
+            </div>
+
+            <div class="processing-file">
+              <span class="processing-file__label">Документ</span>
+              <strong id="progress-file-name">—</strong>
+            </div>
+
+            <div class="steps">
+              <div class="step active">
+                <div class="step__number">01</div>
+                <div class="step__content">
+                  <strong>Подготовка</strong>
+                  <span>Проверяем файл и параметры запуска</span>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step__number">02</div>
+                <div class="step__content">
+                  <strong>Загрузка</strong>
+                  <span>Передаем DOCX в MWS</span>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step__number">03</div>
+                <div class="step__content">
+                  <strong>Анализ</strong>
+                  <span>Проверяем требования и структуру</span>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step__number">04</div>
+                <div class="step__content">
+                  <strong>Верификация</strong>
+                  <span>Отсеиваем дубли и ложные замечания</span>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step__number">05</div>
+                <div class="step__content">
+                  <strong>Отчет</strong>
+                  <span>Формируем результат для аналитика</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="progress-line">
+              <span></span>
+            </div>
+          </div>
+
+          <section id="result-section" class="result-section hidden">
+            <div class="result-hero">
+              <div>
+                <span class="section-kicker section-kicker--light">03 · РЕЗУЛЬТАТ</span>
+                <h2>Ревью завершено</h2>
+                <p id="result-file-name" class="result-file-name">—</p>
+              </div>
+
+              <div class="result-hero__actions">
+                <button id="download-report" class="secondary-button secondary-button--light" type="button">
+                  Скачать отчет
+                </button>
+                <button id="new-review" class="primary-button" type="button">
+                  Проверить другой файл
+                  <span class="primary-button__arrow">→</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="result-stats">
+              <div class="metric metric--blocker">
+                <span class="metric__label">Блокеры</span>
+                <strong id="blockers-count">—</strong>
+              </div>
+
+              <div class="metric metric--major">
+                <span class="metric__label">Существенные</span>
+                <strong id="major-count">—</strong>
+              </div>
+
+              <div class="metric metric--minor">
+                <span class="metric__label">Рекомендации</span>
+                <strong id="minor-count">—</strong>
+              </div>
+            </div>
+
+            <div class="report-card">
+              <div class="report-card__header">
+                <div>
+                  <span class="section-kicker">AI-РЕВЬЮ ТЗ</span>
+                  <h3>Отчет</h3>
+                </div>
+                <span class="tag tag--violet">MWS AI</span>
+              </div>
+
+              <div class="report"></div>
+            </div>
+
+            <p class="disclaimer">
+              AI-ревью помогает найти потенциальные дефекты ТЗ.
+              Финальное решение по замечаниям принимает аналитик.
+            </p>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <span>MTS AI · AI-ревью технического задания</span>
+        <span>Внутренний инструмент</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
