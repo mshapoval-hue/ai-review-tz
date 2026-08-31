@@ -5,7 +5,7 @@ const dropzone = $("dropzone");
 const fileInput = $("file-input");
 const startBtn = $("start-review");
 
-const BRIDGE_URL = "http://127.0.0.1:8765";
+const BRIDGE_URL = "http://127.0.0.1:8766";
 const CONFIG_URL = "./config.json";
 
 function formatSize(bytes) {
